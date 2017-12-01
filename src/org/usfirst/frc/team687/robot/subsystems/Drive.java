@@ -4,6 +4,7 @@ import org.usfirst.frc.team687.robot.RobotMap;
 import org.usfirst.frc.team687.robot.commands.TankDrive;
 
 import com.ctre.phoenix.MotorControl.CAN.TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 import com.ctre.phoenix.MotorControl.SmartMotorController.TalonControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Drive extends Subsystem {
     private final TalonSRX m_lMasterTalon, m_leftTal2, m_leftTal3;
     private final TalonSRX m_rMasterTalon, m_rightTal2, m_rightTal3;
+    private AHRS m_nav;
     
     public Drive() {
     	m_lMasterTalon = new TalonSRX(RobotMap.MasterLeftTalon1);
@@ -49,6 +51,20 @@ public class Drive extends Subsystem {
     
     public double getRightPos() {
     	return m_rMasterTalon.getEncPosition();
+    }
+    
+    public void leftResetTicks(){
+    	m_rMasterTalon.reset();
+    	m_rMasterTalon.setEncPosition(0);
+    }
+    
+    public void rightResetTicks() {
+    	m_lMasterTalon.reset();
+    	m_lMasterTalon.setEncPosition(0);
+    }
+    
+    public void getYaw() {
+    	m_nav.getYaw();
     }
     public void initDefaultCommand() {
     	setDefaultCommand(new TankDrive());
