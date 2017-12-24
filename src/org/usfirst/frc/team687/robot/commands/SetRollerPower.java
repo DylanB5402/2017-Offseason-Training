@@ -1,17 +1,17 @@
 package org.usfirst.frc.team687.robot.commands;
 
 import org.usfirst.frc.team687.robot.Robot;
+import org.usfirst.frc.team687.robot.constants.IntakeConstants;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class TankDrive extends Command {
+public class SetRollerPower extends Command {
 
-    public TankDrive() {
-    	requires(Robot.drive);
+    public SetRollerPower() {
+    	requires(Robot.intakeRoller);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,9 +22,7 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double leftpower = Robot.oi.lStick.getY();
-    	double rightpower= -Robot.oi.rStick.getY();
-    	Robot.drive.setPower(leftpower, rightpower);
+    	Robot.intakeRoller.setPower(IntakeConstants.kRollerMaxPower);
     }
 
     // Make this return true when this Command no longer needs to run execute()

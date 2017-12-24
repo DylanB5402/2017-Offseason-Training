@@ -63,8 +63,8 @@ public class Drive extends Subsystem {
     	m_lMasterTalon.setEncPosition(0);
     }
     
-    public void getYaw() {
-    	m_nav.getYaw();
+    public double getYaw() {
+    	return m_nav.getYaw();
     }
     public void initDefaultCommand() {
     	setDefaultCommand(new TankDrive());

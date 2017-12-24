@@ -10,27 +10,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Intake extends Subsystem {
+public class IntakeRoller extends Subsystem {
+	private final TalonSRX m_roller;
+    // Initialize your subsystem here
 	
-    private final TalonSRX m_artic;
-	
-    public Intake() {
-    	m_artic = new TalonSRX(RobotMap.IntakeArtic);
-    	m_artic.setFeedbackDevice(TalonSRX.FeedbackDevice.CtreMagEncoder_Absolute);
+    public IntakeRoller() {
+    	m_roller = new TalonSRX(RobotMap.IntakeRoller);
     }
-    
-    public void setPower(double power){
-    	m_artic.changeControlMode(TalonControlMode.PercentVbus);
-    	m_artic.set(power);
-    }
-    
-    public double getPos() {
-    	return m_artic.getEncPosition();
+
+    public void setPower(double power) {
+    	m_roller.changeControlMode(TalonControlMode.PercentVbus);
+    	m_roller.set(power);
     }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-}
+
+    }
 

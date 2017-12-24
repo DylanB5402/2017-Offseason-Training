@@ -25,6 +25,7 @@ public class TurnPID extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	m_currentAngle = Robot.drive.getYaw();
     	m_error = m_target - m_currentAngle;
     	m_rotPower = m_error * DriveConstants.kRotP;
     	

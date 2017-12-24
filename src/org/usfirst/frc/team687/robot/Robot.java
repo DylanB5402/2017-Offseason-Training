@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team687.robot.commands.ExampleCommand;
+import org.usfirst.frc.team687.robot.subsystems.Climber;
 import org.usfirst.frc.team687.robot.subsystems.Drive;
-import org.usfirst.frc.team687.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team687.robot.subsystems.Intake;
+import org.usfirst.frc.team687.robot.subsystems.IntakeRoller;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,9 +22,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static Drive drive;
 	public static Intake intake;
+	public static IntakeRoller intakeRoller;
+	public static Climber climber;
 	public static OI oi;
 
 
@@ -33,8 +34,10 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	intakeRoller = new IntakeRoller();
     	intake = new Intake();
     	drive = new Drive();
+    	climber = new Climber();
 		oi = new OI(); 
     }
 	
